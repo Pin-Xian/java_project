@@ -1,4 +1,4 @@
-class position { // venter¥Î
+class position { // venterç”¨
 	private int row, col;
 
 	position(int row, int col) {

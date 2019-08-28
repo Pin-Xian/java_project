@@ -21,70 +21,70 @@ class Game extends Frame implements MouseListener {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
 
-		// µøµ¡¹Ï¥Ü
+		// è¦–çª—åœ–ç¤º
 		Image icon = Toolkit.getDefaultToolkit().getImage("frametitle.png");
 		frame.setIconImage(icon);
 
-		// ²Ä¤@¾î¦C
+		// ç¬¬ä¸€æ©«åˆ—
 		lb_num.setBounds(100, 0, 150, 50);
 		lb_num.setForeground(Color.YELLOW);
-		lb_num.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 15));
-		lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
+		lb_num.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 15));
+		lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
 		lb_time.setBounds(350, 0, 150, 50);
 		lb_time.setForeground(Color.YELLOW);
-		lb_time.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 15));
+		lb_time.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 15));
 
-		// ®É¶¡­p®É³]©w
+		// æ™‚é–“è¨ˆæ™‚è¨­å®š
 		timeCount = 0;
 		TimerTask timertask = new TimerTask() {
 			public void run() {
 				if (timeContinue == 1)
-					lb_time.setText("¤w¸g¹L®É¶¡¡G " + (timeCount++));
+					lb_time.setText("å·²ç¶“éæ™‚é–“ï¼š " + (timeCount++));
 			}
 		};
 		new Timer().scheduleAtFixedRate(timertask, 0, 1000);
 
-		// ¸s²Õ²Ä¤@¾î¦C¡]¸û¦n²¾°Ê¡^
+		// ç¾¤çµ„ç¬¬ä¸€æ©«åˆ—ï¼ˆè¼ƒå¥½ç§»å‹•ï¼‰
 		panel.setSize(600, 50);
 		panel.setBackground(Color.BLACK);
 		panel.setLayout(null);
 		panel.add(lb_num);
 		panel.add(lb_time);
 
-		// «K«K°Ï³]©w«ö¶s
+		// ä¾¿ä¾¿å€è¨­å®šæŒ‰éˆ•
 		centerButtonPanel.setBounds(52, 75, 480, 450);
 		centerButtonPanel.setLayout(new GridLayout(9, 9));
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				button[i][j] = new JButton();
-				button[i][j].setBackground(Color.LIGHT_GRAY); // ³]©w«ö¶s­I´ºÃC¦â
-				button[i][j].setActionCommand(i + " " + j); // ³]©w«ö¶s«ü¥O
-				button[i][j].addMouseListener(this); // ³]©w«ö¶sÂIÀ»³sµ²
+				button[i][j].setBackground(Color.LIGHT_GRAY); // è¨­å®šæŒ‰éˆ•èƒŒæ™¯é¡è‰²
+				button[i][j].setActionCommand(i + " " + j); // è¨­å®šæŒ‰éˆ•æŒ‡ä»¤
+				button[i][j].addMouseListener(this); // è¨­å®šæŒ‰éˆ•é»æ“Šé€£çµ
 				centerButtonPanel.add(button[i][j]);
 			}
 		}
 
-		// ·s§½«ö¶s
-		JButton btn_restart = new JButton("·s§½");
+		// æ–°å±€æŒ‰éˆ•
+		JButton btn_restart = new JButton("æ–°å±€");
 		btn_restart.setBounds(250, 540, 100, 40);
 		btn_restart.setBackground(Color.BLACK);
 		btn_restart.setForeground(Color.YELLOW);
-		btn_restart.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 15));
-		btn_restart.setActionCommand("r"); // ³]©w«ö¶s«ü¥O
+		btn_restart.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 15));
+		btn_restart.setActionCommand("r"); // è¨­å®šæŒ‰éˆ•æŒ‡ä»¤
 		btn_restart.addMouseListener(this);
 
-		function.setMap(); // °õ¦æ«K«K¦ì¸m¦a¹Ï
-		function.aroundPoop(); // °õ¦æªşªñ«K«K¦ì¸m¦a¹Ï
+		function.setMap(); // åŸ·è¡Œä¾¿ä¾¿ä½ç½®åœ°åœ–
+		function.aroundPoop(); // åŸ·è¡Œé™„è¿‘ä¾¿ä¾¿ä½ç½®åœ°åœ–
 
-		// µøµ¡¤º®e
+		// è¦–çª—å…§å®¹
 		frame.add(panel);
 		frame.add(centerButtonPanel, BorderLayout.SOUTH);
 		frame.add(btn_restart);
 		frame.setLayout(null);
 		frame.setVisible(true);
 
-		// ­«·s¡]¶}·s§½¡^
-		lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
+		// é‡æ–°ï¼ˆé–‹æ–°å±€ï¼‰
+		lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
 
 	}
 

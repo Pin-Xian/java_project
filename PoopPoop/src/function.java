@@ -9,48 +9,48 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
 class function extends Frame {
-	public void restart() { // ¶}·s§½
+	public void restart() { // é–‹æ–°å±€
 		timeCount = 1;
 		timeContinue = 1;
 		for (int i = 0; i < 9; i++)
-			Arrays.fill(map[i], 0); // ¥ş³]¬°«D«K«K¦ì¸m
+			Arrays.fill(map[i], 0); // å…¨è¨­ç‚ºéä¾¿ä¾¿ä½ç½®
 		for (int i = 0; i < 9; i++)
-			Arrays.fill(buttonIsPress[i], false); // ¥ş³]¬°¥¼ÂIÀ»
+			Arrays.fill(buttonIsPress[i], false); // å…¨è¨­ç‚ºæœªé»æ“Š
 		for (int i = 0; i < 9; i++)
-			Arrays.fill(mapAroundPoop[i], 0); // ¥ş³¡Âk¹s
+			Arrays.fill(mapAroundPoop[i], 0); // å…¨éƒ¨æ­¸é›¶
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				button[i][j].setBackground(Color.LIGHT_GRAY);
-				button[i][j].setText(" "); // ¤£Åã¥Ü¥ô¦óªF¦è
+				button[i][j].setText(" "); // ä¸é¡¯ç¤ºä»»ä½•æ±è¥¿
 			}
 		}
 		poopCount = 15;
 		setMap();
 		aroundPoop();
-		lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
+		lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
 	}
 
-	public void setMap() { // «K«K¦ì¸m¦a¹Ï³]©w
+	public void setMap() { // ä¾¿ä¾¿ä½ç½®åœ°åœ–è¨­å®š
 		int count = 0;
-		while (count != 15) { // ³]©w«K«K¼Æ¶q
+		while (count != 15) { // è¨­å®šä¾¿ä¾¿æ•¸é‡
 			int x = (int) (Math.random() * 9);
-			int y = (int) (Math.random() * 9); // ÀH¾÷¿ï¨ú«K«Kªº¦a²z¦ì¸m
+			int y = (int) (Math.random() * 9); // éš¨æ©Ÿé¸å–ä¾¿ä¾¿çš„åœ°ç†ä½ç½®
 			if (map[x][y] == 0) {
-				map[x][y] = 1; // 0:µL¤j«K¡B1¡G¦³¤j«K¡F¤£­«½Æ
+				map[x][y] = 1; // 0:ç„¡å¤§ä¾¿ã€1ï¼šæœ‰å¤§ä¾¿ï¼›ä¸é‡è¤‡
 				count++;
 			}
 		}
 	}
 
-	public void aroundPoop() { // ªşªñ«K«K¼Æ¶qªº¦a²z¦ì¸m³]©w
+	public void aroundPoop() { // é™„è¿‘ä¾¿ä¾¿æ•¸é‡çš„åœ°ç†ä½ç½®è¨­å®š
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if (map[i][j] == 1) // ¸Ó¦a²z¦ì¸m¬°«K«K
-					mapAroundPoop[i][j] = -1; // «K«K¥»¨­³]©w¬°-1
+				if (map[i][j] == 1) // è©²åœ°ç†ä½ç½®ç‚ºä¾¿ä¾¿
+					mapAroundPoop[i][j] = -1; // ä¾¿ä¾¿æœ¬èº«è¨­å®šç‚º-1
 				else {
-					for (int k = 0; k < 9; k++) { // ¸Ó¦a²z¦ì¸m«D«K«K¡A§äªşªñ8­Ó¤è¦ì«K«Kªº¼Æ¶q
+					for (int k = 0; k < 9; k++) { // è©²åœ°ç†ä½ç½®éä¾¿ä¾¿ï¼Œæ‰¾é™„è¿‘8å€‹æ–¹ä½ä¾¿ä¾¿çš„æ•¸é‡
 						int row = i + direct[k][0], col = j + direct[k][1]; //
-						if ((row >= 0 && row < 9 && col >= 0 && col < 9) && map[row][col] == 1) // §PÂ_¬O§_¦ì©óÃä¬É¡]³Ì¤W¡B¤U¡B¥ª¡B¥kÃä¡^¡A­Y¬O¡A´î¤Ö­pºâ¤è¦ì
+						if ((row >= 0 && row < 9 && col >= 0 && col < 9) && map[row][col] == 1) // åˆ¤æ–·æ˜¯å¦ä½æ–¼é‚Šç•Œï¼ˆæœ€ä¸Šã€ä¸‹ã€å·¦ã€å³é‚Šï¼‰ï¼Œè‹¥æ˜¯ï¼Œæ¸›å°‘è¨ˆç®—æ–¹ä½
 							mapAroundPoop[i][j]++;
 					}
 				}
@@ -59,31 +59,31 @@ class function extends Frame {
 	}
 
 	public void mouseClicked(MouseEvent e) {
-		String command[] = ((JButton) e.getSource()).getActionCommand().split(" "); // »P¤W­±ªºset command³sµ²
+		String command[] = ((JButton) e.getSource()).getActionCommand().split(" "); // èˆ‡ä¸Šé¢çš„set commandé€£çµ
 		if (command[0].equals("r")) {
-			// ¶}·s§½
+			// é–‹æ–°å±€
 			restart();
 		} else {
-			int row = Integer.parseInt(command[0]), col = Integer.parseInt(command[1]); // »P¤W­±ªºset command³sµ²
+			int row = Integer.parseInt(command[0]), col = Integer.parseInt(command[1]); // èˆ‡ä¸Šé¢çš„set commandé€£çµ
 			if (e.getButton() == MouseEvent.BUTTON1) { //
-				if (map[row][col] == 1 && !buttonIsPress[row][col]) { // ¬°«K«K¡A¥B«ö¶s¨S«ö¹L
+				if (map[row][col] == 1 && !buttonIsPress[row][col]) { // ç‚ºä¾¿ä¾¿ï¼Œä¸”æŒ‰éˆ•æ²’æŒ‰é
 					for (int i = 0; i < 9; i++)
 						for (int j = 0; j < 9; j++)
 							if (map[i][j] == 1) {
 								button[i][j].setFont(new Font(" ", Font.BOLD, 18));
 								button[i][j].setBackground(new Color(250, 255, 239));
 								button[i][j].setForeground(new Color(51, 0, 0));
-								button[i][j].setText("\ud83d\udca9"); // ¦L¥X©Ò¦³«K«K
+								button[i][j].setText("\ud83d\udca9"); // å°å‡ºæ‰€æœ‰ä¾¿ä¾¿
 							}
-					timeContinue = 0; // ®É¶¡°±¤î­p®É
-					JLabel label1 = new JLabel("§A½ò¨ì«K«K¤F¡I¡I");
-					label1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 14));
-					JOptionPane.showMessageDialog(null, label1);// Åã¥Ü¯}Ãö¥¢±Ñªº°T®§
-					restart(); // ­«·s¶}©l
+					timeContinue = 0; // æ™‚é–“åœæ­¢è¨ˆæ™‚
+					JLabel label1 = new JLabel("ä½ è¸©åˆ°ä¾¿ä¾¿äº†ï¼ï¼");
+					label1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 14));
+					JOptionPane.showMessageDialog(null, label1);// é¡¯ç¤ºç ´é—œå¤±æ•—çš„è¨Šæ¯
+					restart(); // é‡æ–°é–‹å§‹
 				} else {
-					if (mapAroundPoop[row][col] == 0 && !buttonIsPress[row][col]) { // ·í«ö¨ì©P³ò¨S«K«Kªº«ö¶s«hÂX´²¡A¥B«ö¶s¨S«ö¹L
-						Vector<position> vector = new Vector<position>(); // ¬ö¿ı»İ­nÂX´²ªºÂI
-						vector.add(new position(row, col)); // §PÂ_ÂI¬O§_²Å¦XÂX´²ªº»İ¨D¡Aª½¨ìvectorªº¸ê®Æ³£³B²z§¹
+					if (mapAroundPoop[row][col] == 0 && !buttonIsPress[row][col]) { // ç•¶æŒ‰åˆ°å‘¨åœæ²’ä¾¿ä¾¿çš„æŒ‰éˆ•å‰‡æ“´æ•£ï¼Œä¸”æŒ‰éˆ•æ²’æŒ‰é
+						Vector<position> vector = new Vector<position>(); // ç´€éŒ„éœ€è¦æ“´æ•£çš„é»
+						vector.add(new position(row, col)); // åˆ¤æ–·é»æ˜¯å¦ç¬¦åˆæ“´æ•£çš„éœ€æ±‚ï¼Œç›´åˆ°vectorçš„è³‡æ–™éƒ½è™•ç†å®Œ
 						for (int i = 0; i < vector.size(); i++) {
 							for (int j = 0; j < 9; j++) {
 								int tempRow = direct[j][0] + vector.get(i).getRow();
@@ -91,7 +91,7 @@ class function extends Frame {
 								if ((tempRow >= 0 && tempRow < 9) && (tempCol >= 0 && tempCol < 9)
 										&& mapAroundPoop[tempRow][tempCol] == 0) { //
 									boolean flag = false;
-									// ÀË¬d¬O§_¤w¸gÀx¦s¦¹µ§¸ê®Æ
+									// æª¢æŸ¥æ˜¯å¦å·²ç¶“å„²å­˜æ­¤ç­†è³‡æ–™
 									for (int k = 0; k < vector.size(); k++) {
 										if (tempRow == vector.get(k).getRow() && tempCol == vector.get(k).getCol()) {
 											flag = true;
@@ -99,53 +99,53 @@ class function extends Frame {
 										}
 									}
 									if (!flag)
-										vector.add(new position(tempRow, tempCol)); // ¦¹ÂX´²ÂI¤£¦s¦b«hÀx¦s°_¨Ó¡C
+										vector.add(new position(tempRow, tempCol)); // æ­¤æ“´æ•£é»ä¸å­˜åœ¨å‰‡å„²å­˜èµ·ä¾†ã€‚
 								}
 							}
 						}
-						// ¶}©lÂX´²
+						// é–‹å§‹æ“´æ•£
 						for (int i = 0; i < vector.size(); i++) {
 							for (int j = 0; j < 9; j++) {
 								int tempRow = direct[j][0] + vector.get(i).getRow();
 								int tempCol = direct[j][1] + vector.get(i).getCol();
 								if ((tempRow >= 0 && tempRow < 9) && (tempCol >= 0 && tempCol < 9)) {
-									if (mapAroundPoop[tempRow][tempCol] != 0) {// «D0¼Æ¦rªº¦ì¸m¤~¦L¥X¨Ó
+									if (mapAroundPoop[tempRow][tempCol] != 0) {// é0æ•¸å­—çš„ä½ç½®æ‰å°å‡ºä¾†
 										button[tempRow][tempCol].setFont(new Font(" ", Font.BOLD, 18));
 										button[tempRow][tempCol]
 												.setText(Integer.toString(mapAroundPoop[tempRow][tempCol]));
 									}
 									button[tempRow][tempCol].setForeground(new Color(244, 239, 255));
-									button[tempRow][tempCol].setBackground(Color.DARK_GRAY); // ³]©w«ö¶s­I´ºÃC¦â
-									buttonIsPress[tempRow][tempCol] = true; // ³]©w«ö¶s¬°«ö¹L
+									button[tempRow][tempCol].setBackground(Color.DARK_GRAY); // è¨­å®šæŒ‰éˆ•èƒŒæ™¯é¡è‰²
+									buttonIsPress[tempRow][tempCol] = true; // è¨­å®šæŒ‰éˆ•ç‚ºæŒ‰é
 								}
 							}
 						}
-					} else if (!buttonIsPress[row][col]) { // ªşªñ¦³«K«Kªº¦a²z¦ì¸m
+					} else if (!buttonIsPress[row][col]) { // é™„è¿‘æœ‰ä¾¿ä¾¿çš„åœ°ç†ä½ç½®
 						button[row][col].setFont(new Font("", Font.BOLD, 18));
-						button[row][col].setText(Integer.toString(mapAroundPoop[row][col])); // ¦L¥X¼Æ¦r
+						button[row][col].setText(Integer.toString(mapAroundPoop[row][col])); // å°å‡ºæ•¸å­—
 						button[row][col].setForeground(new Color(244, 239, 255));
-						button[row][col].setBackground(Color.DARK_GRAY); // ³]©w«ö¶s­I´ºÃC¦â
-						buttonIsPress[row][col] = true; // ³]©w«ö¶s¬°«ö¹L
+						button[row][col].setBackground(Color.DARK_GRAY); // è¨­å®šæŒ‰éˆ•èƒŒæ™¯é¡è‰²
+						buttonIsPress[row][col] = true; // è¨­å®šæŒ‰éˆ•ç‚ºæŒ‰é
 					}
 				}
-			} else if (buttonIsPress[row][col] && e.getButton() == MouseEvent.BUTTON2) { // ¨ú®ø¼Ğ°Oªº«K«K«ö¯Ã
-				buttonIsPress[row][col] = false; // ¨ú®ø«öÀ£¡C
+			} else if (buttonIsPress[row][col] && e.getButton() == MouseEvent.BUTTON2) { // å–æ¶ˆæ¨™è¨˜çš„ä¾¿ä¾¿æŒ‰ç´
+				buttonIsPress[row][col] = false; // å–æ¶ˆæŒ‰å£“ã€‚
 				button[row][col].setText("");
-				button[row][col].setBackground(Color.LIGHT_GRAY); // ³]©w«ö¶s­I´ºÃC¦â
-				poopCount++; // «K«K¼Æ+1
-				lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
-			} else if (e.getButton() == MouseEvent.BUTTON3 && !buttonIsPress[row][col]) { // ¼Ğ°O«K«K¡A¨Ã§PÂ_¬O§_µ²§ô¹CÀ¸
-				button[row][col].setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 18));
-				button[row][col].setText("¸T");
+				button[row][col].setBackground(Color.LIGHT_GRAY); // è¨­å®šæŒ‰éˆ•èƒŒæ™¯é¡è‰²
+				poopCount++; // ä¾¿ä¾¿æ•¸+1
+				lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
+			} else if (e.getButton() == MouseEvent.BUTTON3 && !buttonIsPress[row][col]) { // æ¨™è¨˜ä¾¿ä¾¿ï¼Œä¸¦åˆ¤æ–·æ˜¯å¦çµæŸéŠæˆ²
+				button[row][col].setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 18));
+				button[row][col].setText("ç¦");
 				button[row][col].setForeground(Color.RED);
 				button[row][col].setBackground(new Color(255, 239, 250));
-				buttonIsPress[row][col] = true; // ³]©w«ö¶s¬°«ö¹L
-				poopCount--; // «K«K¼Æ-1
-				lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
+				buttonIsPress[row][col] = true; // è¨­å®šæŒ‰éˆ•ç‚ºæŒ‰é
+				poopCount--; // ä¾¿ä¾¿æ•¸-1
+				lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
 
-				if (poopCount == 0) { // §PÂ_¬O§_µ²§ô¹CÀ¸
+				if (poopCount == 0) { // åˆ¤æ–·æ˜¯å¦çµæŸéŠæˆ²
 					boolean endGame = true;
-					for (int i = 0; i < 9; i++) { // §PÂ_¦³«K«Kªº«ö¶s¬O§_¤w¸g¼Ğ°O
+					for (int i = 0; i < 9; i++) { // åˆ¤æ–·æœ‰ä¾¿ä¾¿çš„æŒ‰éˆ•æ˜¯å¦å·²ç¶“æ¨™è¨˜
 						for (int j = 0; j < 9; j++) {
 							if (map[i][j] == 1)
 								if (buttonIsPress[i][j] != true)
@@ -153,11 +153,11 @@ class function extends Frame {
 						}
 					}
 					if (endGame) {
-						timeContinue = 0; // ®É¶¡°±¤î­p®É
-						JLabel label2 = new JLabel("®¥³ß¯}Ãö¡I¡I");
-						label2.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 14));
-						JOptionPane.showMessageDialog(null, label2); // Åã¥Ü¯}Ãö°T®§
-						restart(); // ­«·s¶}©l¹CÀ¸
+						timeContinue = 0; // æ™‚é–“åœæ­¢è¨ˆæ™‚
+						JLabel label2 = new JLabel("æ­å–œç ´é—œï¼ï¼");
+						label2.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 14));
+						JOptionPane.showMessageDialog(null, label2); // é¡¯ç¤ºç ´é—œè¨Šæ¯
+						restart(); // é‡æ–°é–‹å§‹éŠæˆ²
 					}
 				}
 			}
