@@ -1,4 +1,4 @@
 
-public class postion { //sfdfsdf
+public class postion { 
 
 }
