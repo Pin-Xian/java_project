@@ -2,22 +2,22 @@ import java.awt.Color;
 import java.util.Arrays;
 
 abstract class restart implements frame{
-	public void restart() { // ¶}·s§½
+	public void restart() { // é–‹æ–°å±€
 		for (int i = 0; i < 9; i++)
-			Arrays.fill(map[i], 0); // ¥þ³]¬°«D«K«K¦ì¸m
+			Arrays.fill(map[i], 0); // å…¨è¨­ç‚ºéžä¾¿ä¾¿ä½ç½®
 		for (int i = 0; i < 9; i++)
-			Arrays.fill(buttonIsPress[i], false); // ¥þ³]¬°¥¼ÂIÀ»
+			Arrays.fill(buttonIsPress[i], false); // å…¨è¨­ç‚ºæœªé»žæ“Š
 		for (int i = 0; i < 9; i++)
-			Arrays.fill(mapAroundPoop[i], 0); // ¥þ³¡Âk¹s
+			Arrays.fill(mapAroundPoop[i], 0); // å…¨éƒ¨æ­¸é›¶
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
 				button[i][j].setBackground(Color.LIGHT_GRAY);
-				button[i][j].setText(" "); // ¤£Åã¥Ü¥ô¦óªF¦è
+				button[i][j].setText(" "); // ä¸é¡¯ç¤ºä»»ä½•æ±è¥¿
 			}
 		}
 		setMap();
 		aroundPoop();
-		lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
+		lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
 	}
 
 	protected abstract void aroundPoop();

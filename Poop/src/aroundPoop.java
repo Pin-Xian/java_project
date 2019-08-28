@@ -1,13 +1,13 @@
 abstract class aroundPoop implements frame{
-	public void aroundPoop() { // ªşªñ«K«K¼Æ¶qªº¦a²z¦ì¸m³]©w
+	public void aroundPoop() { // é™„è¿‘ä¾¿ä¾¿æ•¸é‡çš„åœ°ç†ä½ç½®è¨­å®š
 		for (int i = 0; i < 9; i++) {
 			for (int j = 0; j < 9; j++) {
-				if (map[i][j] == 1) // ¸Ó¦a²z¦ì¸m¬°«K«K
-					mapAroundPoop[i][j] = -1; // «K«K¥»¨­³]©w¬°-1
+				if (map[i][j] == 1) // è©²åœ°ç†ä½ç½®ç‚ºä¾¿ä¾¿
+					mapAroundPoop[i][j] = -1; // ä¾¿ä¾¿æœ¬èº«è¨­å®šç‚º-1
 				else {
-					for (int k = 0; k < 9; k++) { // ¸Ó¦a²z¦ì¸m«D«K«K¡A§äªşªñ8­Ó¤è¦ì«K«Kªº¼Æ¶q
+					for (int k = 0; k < 9; k++) { // è©²åœ°ç†ä½ç½®éä¾¿ä¾¿ï¼Œæ‰¾é™„è¿‘8å€‹æ–¹ä½ä¾¿ä¾¿çš„æ•¸é‡
 						int row = i + direct[k][0], col = j + direct[k][1]; //
-						if ((row >= 0 && row < 9 && col >= 0 && col < 9) && map[row][col] == 1) // §PÂ_¬O§_¦ì©óÃä¬É¡]³Ì¤W¡B¤U¡B¥ª¡B¥kÃä¡^¡A­Y¬O¡A´î¤Ö­pºâ¤è¦ì
+						if ((row >= 0 && row < 9 && col >= 0 && col < 9) && map[row][col] == 1) // åˆ¤æ–·æ˜¯å¦ä½æ–¼é‚Šç•Œï¼ˆæœ€ä¸Šã€ä¸‹ã€å·¦ã€å³é‚Šï¼‰ï¼Œè‹¥æ˜¯ï¼Œæ¸›å°‘è¨ˆç®—æ–¹ä½
 							mapAroundPoop[i][j]++;
 					}
 				}

@@ -3,6 +3,5 @@ public class Main { // ¥Dµ{¦¡
 
 		Game game = new Game();
 
-		System.out.print("hello");
 	}
 }

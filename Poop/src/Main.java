@@ -1,4 +1,4 @@
-public class Main { // •Dµ{¶°
+public class Main { // ‰∏ªÁ®ãÂºè
 	public static void main(String[] args) {
 		Game game = new Game();
 	}

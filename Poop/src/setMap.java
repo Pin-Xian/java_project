@@ -1,10 +1,10 @@
 abstract class setMap implements frame{
-	public void setMap(int count) { // «K«K¦ì¸m¦a¹Ï³]©w
-		while (count != 15) { // ³]©w«K«K¼Æ¶q
+	public void setMap(int count) { // ä¾¿ä¾¿ä½ç½®åœ°åœ–è¨­å®š
+		while (count != 15) { // è¨­å®šä¾¿ä¾¿æ•¸é‡
 			int x = (int) (Math.random() * 9);
-			int y = (int) (Math.random() * 9); // ÀH¾÷¿ï¨ú«K«Kªº¦a²z¦ì¸m
+			int y = (int) (Math.random() * 9); // éš¨æ©Ÿé¸å–ä¾¿ä¾¿çš„åœ°ç†ä½ç½®
 			if (map[x][y] == 0) {
-				map[x][y] = 1; // 0:µL¤j«K¡B1¡G¦³¤j«K¡F¤£­«½Æ
+				map[x][y] = 1; // 0:ç„¡å¤§ä¾¿ã€1ï¼šæœ‰å¤§ä¾¿ï¼›ä¸é‡è¤‡
 				count++;
 			}
 		}

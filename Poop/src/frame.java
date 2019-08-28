@@ -5,22 +5,22 @@ import javax.swing.JPanel;
 
 interface frame {
 	int poopCount = 15;
-	JFrame frame = new JFrame("PoopSweeper ±½«K«K"); // µøµ¡¼ĞÃD
-	JLabel lb_num = new JLabel("³Ñ¾l«K«K¼Æ¡G" + poopCount);
-	JLabel lb_time = new JLabel("¤w¸g¹L®É¶¡¡G0"); // Åã¥Ü¥Ø«e¤w¸g¹L®É¶¡(¬í)
+	JFrame frame = new JFrame("PoopSweeper æƒä¾¿ä¾¿"); // è¦–çª—æ¨™é¡Œ
+	JLabel lb_num = new JLabel("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
+	JLabel lb_time = new JLabel("å·²ç¶“éæ™‚é–“ï¼š0"); // é¡¯ç¤ºç›®å‰å·²ç¶“éæ™‚é–“(ç§’)
 	JPanel panel = new JPanel();
 
 	JButton button[][] = new JButton[9][9];
-	int map[][] = new int[9][9]; // ÅÜ¼Æ«Å§i¡G«K«K¦ì¸m¦a¹Ï
+	int map[][] = new int[9][9]; // è®Šæ•¸å®£å‘Šï¼šä¾¿ä¾¿ä½ç½®åœ°åœ–
 	int mapAroundPoop[][] = new int[9][9];
 	JPanel centerButtonPanel = new JPanel();
 
-	int direct[][] = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 0 }, { 0, 1 }, { 1, -1 }, { 1, 0 }, { 1, 1 } }; // ¥H(0¡A0)¬°¦Û¤v¡Aªşªñªº8­Ó¤è¦ì
+	int direct[][] = { { -1, -1 }, { -1, 0 }, { -1, 1 }, { 0, -1 }, { 0, 0 }, { 0, 1 }, { 1, -1 }, { 1, 0 }, { 1, 1 } }; // ä»¥(0ï¼Œ0)ç‚ºè‡ªå·±ï¼Œé™„è¿‘çš„8å€‹æ–¹ä½
 
 	boolean buttonIsPress[][] = new boolean[9][9];
 
 	int timeCount = 0;
-	int timeContinue = 1; // ®É¶¡Ä~Äò­p¼Æor°±¤î¡C1:Ä~Äò¡B0:°±¤î
+	int timeContinue = 1; // æ™‚é–“ç¹¼çºŒè¨ˆæ•¸oråœæ­¢ã€‚1:ç¹¼çºŒã€0:åœæ­¢
 	
 	
 }

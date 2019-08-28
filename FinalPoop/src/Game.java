@@ -12,13 +12,11 @@ import java.util.TimerTask;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-class Game extends JFrame implements MouseListener, frame {
+class Game extends Frame implements MouseListener {
 	static function function = new function();
-	static int timeCount = 0;
-	static int timeContinue = 0;
-	static int count = 0;
 
-	public static void main(String[] args, MouseListener me) {
+	Game() {
+
 		frame.setBounds(350, 50, 600, 650);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setResizable(false);
@@ -61,7 +59,7 @@ class Game extends JFrame implements MouseListener, frame {
 				button[i][j] = new JButton();
 				button[i][j].setBackground(Color.LIGHT_GRAY); // 設定按鈕背景顏色
 				button[i][j].setActionCommand(i + " " + j); // 設定按鈕指令
-				button[i][j].addMouseListener(me); // 設定按鈕點擊連結
+				button[i][j].addMouseListener(this); // 設定按鈕點擊連結
 				centerButtonPanel.add(button[i][j]);
 			}
 		}
@@ -73,9 +71,9 @@ class Game extends JFrame implements MouseListener, frame {
 		btn_restart.setForeground(Color.YELLOW);
 		btn_restart.setFont(new Font("微軟正黑體", Font.BOLD, 15));
 		btn_restart.setActionCommand("r"); // 設定按鈕指令
-		btn_restart.addMouseListener(me);
+		btn_restart.addMouseListener(this);
 
-		function.setMap(count); // 執行便便位置地圖
+		function.setMap(); // 執行便便位置地圖
 		function.aroundPoop(); // 執行附近便便位置地圖
 
 		// 視窗內容
@@ -86,36 +84,36 @@ class Game extends JFrame implements MouseListener, frame {
 		frame.setVisible(true);
 
 		// 重新（開新局）
-		// poopCount = 15;
 		lb_num.setText("剩餘便便數：" + poopCount);
-	}
-
-	@Override
-	public void mouseClicked(MouseEvent me) {
-		function.mouseClicked(me);
 
 	}
 
 	@Override
-	public void mousePressed(MouseEvent me) {
+	public void mouseClicked(MouseEvent e) {
+		function.mouseClicked(e);
+
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent me) {
+	public void mouseReleased(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void mouseEntered(MouseEvent me) {
+	public void mouseEntered(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}
 
 	@Override
-	public void mouseExited(MouseEvent me) {
+	public void mouseExited(MouseEvent e) {
 		// TODO Auto-generated method stub
 
 	}

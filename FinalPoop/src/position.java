@@ -1,7 +1,7 @@
-class postion { // venter¥Î
+class position { // venter¥Î
 	private int row, col;
 
-	postion(int row, int col) {
+	position(int row, int col) {
 		this.row = row;
 		this.col = col;
 	}

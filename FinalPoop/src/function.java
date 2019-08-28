@@ -8,11 +8,10 @@ import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-class function implements frame {
-	int count;
-	int timeContinue;
-
+class function extends Frame {
 	public void restart() { // 開新局
+		timeCount = 1;
+		timeContinue = 1;
 		for (int i = 0; i < 9; i++)
 			Arrays.fill(map[i], 0); // 全設為非便便位置
 		for (int i = 0; i < 9; i++)
@@ -25,12 +24,14 @@ class function implements frame {
 				button[i][j].setText(" "); // 不顯示任何東西
 			}
 		}
-		setMap(count);
+		poopCount = 15;
+		setMap();
 		aroundPoop();
 		lb_num.setText("剩餘便便數：" + poopCount);
 	}
 
-	public void setMap(int count) { // 便便位置地圖設定
+	public void setMap() { // 便便位置地圖設定
+		int count = 0;
 		while (count != 15) { // 設定便便數量
 			int x = (int) (Math.random() * 9);
 			int y = (int) (Math.random() * 9); // 隨機選取便便的地理位置
@@ -66,10 +67,14 @@ class function implements frame {
 			int row = Integer.parseInt(command[0]), col = Integer.parseInt(command[1]); // 與上面的set command連結
 			if (e.getButton() == MouseEvent.BUTTON1) { //
 				if (map[row][col] == 1 && !buttonIsPress[row][col]) { // 為便便，且按鈕沒按過
-					button[row][col].setFont(new Font(" ", Font.BOLD, 18));
-					button[row][col].setBackground(new Color(250, 255, 239));
-					button[row][col].setForeground(new Color(51, 0, 0));
-					button[row][col].setText("\ud83d\udca9"); // 印出所有便便
+					for (int i = 0; i < 9; i++)
+						for (int j = 0; j < 9; j++)
+							if (map[i][j] == 1) {
+								button[i][j].setFont(new Font(" ", Font.BOLD, 18));
+								button[i][j].setBackground(new Color(250, 255, 239));
+								button[i][j].setForeground(new Color(51, 0, 0));
+								button[i][j].setText("\ud83d\udca9"); // 印出所有便便
+							}
 					timeContinue = 0; // 時間停止計時
 					JLabel label1 = new JLabel("你踩到便便了！！");
 					label1.setFont(new Font("微軟正黑體", Font.BOLD, 14));
@@ -77,8 +82,8 @@ class function implements frame {
 					restart(); // 重新開始
 				} else {
 					if (mapAroundPoop[row][col] == 0 && !buttonIsPress[row][col]) { // 當按到周圍沒便便的按鈕則擴散，且按鈕沒按過
-						Vector<postion> vector = new Vector<postion>(); // 紀錄需要擴散的點
-						vector.add(new postion(row, col)); // 判斷點是否符合擴散的需求，直到vector的資料都處理完
+						Vector<position> vector = new Vector<position>(); // 紀錄需要擴散的點
+						vector.add(new position(row, col)); // 判斷點是否符合擴散的需求，直到vector的資料都處理完
 						for (int i = 0; i < vector.size(); i++) {
 							for (int j = 0; j < 9; j++) {
 								int tempRow = direct[j][0] + vector.get(i).getRow();
@@ -94,7 +99,7 @@ class function implements frame {
 										}
 									}
 									if (!flag)
-										vector.add(new postion(tempRow, tempCol)); // 此擴散點不存在則儲存起來。
+										vector.add(new position(tempRow, tempCol)); // 此擴散點不存在則儲存起來。
 								}
 							}
 						}
@@ -127,7 +132,7 @@ class function implements frame {
 				buttonIsPress[row][col] = false; // 取消按壓。
 				button[row][col].setText("");
 				button[row][col].setBackground(Color.LIGHT_GRAY); // 設定按鈕背景顏色
-				poopCountAdd(1); // 便便數+1
+				poopCount++; // 便便數+1
 				lb_num.setText("剩餘便便數：" + poopCount);
 			} else if (e.getButton() == MouseEvent.BUTTON3 && !buttonIsPress[row][col]) { // 標記便便，並判斷是否結束遊戲
 				button[row][col].setFont(new Font("微軟正黑體", Font.BOLD, 18));
@@ -135,7 +140,7 @@ class function implements frame {
 				button[row][col].setForeground(Color.RED);
 				button[row][col].setBackground(new Color(255, 239, 250));
 				buttonIsPress[row][col] = true; // 設定按鈕為按過
-				poopCountSubstract(1); // 便便數-1
+				poopCount--; // 便便數-1
 				lb_num.setText("剩餘便便數：" + poopCount);
 
 				if (poopCount == 0) { // 判斷是否結束遊戲
@@ -157,13 +162,5 @@ class function implements frame {
 				}
 			}
 		}
-	}
-	
-	public void poopCountAdd(int value) {
-		// 未完成
-	}
-	
-	public void poopCountSubstract(int value) {
-		// 未完成
 	}
 }

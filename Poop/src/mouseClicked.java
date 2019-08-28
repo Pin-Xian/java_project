@@ -9,27 +9,27 @@ import javax.swing.JOptionPane;
 
 abstract class mouseClicked implements frame {
 	public void mouseClicked(MouseEvent e) {
-		String command[] = ((JButton) e.getSource()).getActionCommand().split(" "); // »P¤W­±ªºset command³sµ²
+		String command[] = ((JButton) e.getSource()).getActionCommand().split(" "); // èˆ‡ä¸Šé¢çš„set commandé€£çµ
 		if (command[0].equals("r")) {
-			// ¶}·s§½
+			// é–‹æ–°å±€
 			restart();
 		} else {
-			int row = Integer.parseInt(command[0]), col = Integer.parseInt(command[1]); // »P¤W­±ªºset command³sµ²
+			int row = Integer.parseInt(command[0]), col = Integer.parseInt(command[1]); // èˆ‡ä¸Šé¢çš„set commandé€£çµ
 			if (e.getButton() == MouseEvent.BUTTON1) { //
-				if (map[row][col] == 1 && !buttonIsPress[row][col]) { // ¬°«K«K¡A¥B«ö¶s¨S«ö¹L
+				if (map[row][col] == 1 && !buttonIsPress[row][col]) { // ç‚ºä¾¿ä¾¿ï¼Œä¸”æŒ‰éˆ•æ²’æŒ‰é
 					button[row][col].setFont(new Font(" ", Font.BOLD, 18));
 					button[row][col].setBackground(new Color(250, 255, 239));
 					button[row][col].setForeground(new Color(51, 0, 0));
-					button[row][col].setText("\ud83d\udca9"); // ¦L¥X©Ò¦³«K«K
-					timeContinue = 0; // ®É¶¡°±¤î­p®É
-					JLabel label1 = new JLabel("§A½ò¨ì«K«K¤F¡I¡I");
-					label1.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 14));
-					JOptionPane.showMessageDialog(null, label1);// Åã¥Ü¯}Ãö¥¢±Ñªº°T®§
-					restart(); // ­«·s¶}©l
+					button[row][col].setText("\ud83d\udca9"); // å°å‡ºæ‰€æœ‰ä¾¿ä¾¿
+					timeContinue = 0; // æ™‚é–“åœæ­¢è¨ˆæ™‚
+					JLabel label1 = new JLabel("ä½ è¸©åˆ°ä¾¿ä¾¿äº†ï¼ï¼");
+					label1.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 14));
+					JOptionPane.showMessageDialog(null, label1);// é¡¯ç¤ºç ´é—œå¤±æ•—çš„è¨Šæ¯
+					restart(); // é‡æ–°é–‹å§‹
 				} else {
-					if (mapAroundPoop[row][col] == 0 && !buttonIsPress[row][col]) { // ·í«ö¨ì©P³ò¨S«K«Kªº«ö¶s«hÂX´²¡A¥B«ö¶s¨S«ö¹L
-						Vector<postion> vector = new Vector<postion>(); // ¬ö¿ı»İ­nÂX´²ªºÂI
-						vector.add(new postion(row, col)); // §PÂ_ÂI¬O§_²Å¦XÂX´²ªº»İ¨D¡Aª½¨ìvectorªº¸ê®Æ³£³B²z§¹
+					if (mapAroundPoop[row][col] == 0 && !buttonIsPress[row][col]) { // ç•¶æŒ‰åˆ°å‘¨åœæ²’ä¾¿ä¾¿çš„æŒ‰éˆ•å‰‡æ“´æ•£ï¼Œä¸”æŒ‰éˆ•æ²’æŒ‰é
+						Vector<postion> vector = new Vector<postion>(); // ç´€éŒ„éœ€è¦æ“´æ•£çš„é»
+						vector.add(new postion(row, col)); // åˆ¤æ–·é»æ˜¯å¦ç¬¦åˆæ“´æ•£çš„éœ€æ±‚ï¼Œç›´åˆ°vectorçš„è³‡æ–™éƒ½è™•ç†å®Œ
 						for (int i = 0; i < vector.size(); i++) {
 							for (int j = 0; j < 9; j++) {
 								int tempRow = direct[j][0] + vector.get(i).getRow();
@@ -37,7 +37,7 @@ abstract class mouseClicked implements frame {
 								if ((tempRow >= 0 && tempRow < 9) && (tempCol >= 0 && tempCol < 9)
 										&& mapAroundPoop[tempRow][tempCol] == 0) { //
 									boolean flag = false;
-									// ÀË¬d¬O§_¤w¸gÀx¦s¦¹µ§¸ê®Æ
+									// æª¢æŸ¥æ˜¯å¦å·²ç¶“å„²å­˜æ­¤ç­†è³‡æ–™
 									for (int k = 0; k < vector.size(); k++) {
 										if (tempRow == vector.get(k).getRow() && tempCol == vector.get(k).getCol()) {
 											flag = true;
@@ -45,53 +45,53 @@ abstract class mouseClicked implements frame {
 										}
 									}
 									if (!flag)
-										vector.add(new postion(tempRow, tempCol)); // ¦¹ÂX´²ÂI¤£¦s¦b«hÀx¦s°_¨Ó¡C
+										vector.add(new postion(tempRow, tempCol)); // æ­¤æ“´æ•£é»ä¸å­˜åœ¨å‰‡å„²å­˜èµ·ä¾†ã€‚
 								}
 							}
 						}
-						// ¶}©lÂX´²
+						// é–‹å§‹æ“´æ•£
 						for (int i = 0; i < vector.size(); i++) {
 							for (int j = 0; j < 9; j++) {
 								int tempRow = direct[j][0] + vector.get(i).getRow();
 								int tempCol = direct[j][1] + vector.get(i).getCol();
 								if ((tempRow >= 0 && tempRow < 9) && (tempCol >= 0 && tempCol < 9)) {
-									if (mapAroundPoop[tempRow][tempCol] != 0) {// «D0¼Æ¦rªº¦ì¸m¤~¦L¥X¨Ó
+									if (mapAroundPoop[tempRow][tempCol] != 0) {// é0æ•¸å­—çš„ä½ç½®æ‰å°å‡ºä¾†
 										button[tempRow][tempCol].setFont(new Font(" ", Font.BOLD, 18));
 										button[tempRow][tempCol]
 												.setText(Integer.toString(mapAroundPoop[tempRow][tempCol]));
 									}
 									button[tempRow][tempCol].setForeground(new Color(244, 239, 255));
-									button[tempRow][tempCol].setBackground(Color.DARK_GRAY); // ³]©w«ö¶s­I´ºÃC¦â
-									buttonIsPress[tempRow][tempCol] = true; // ³]©w«ö¶s¬°«ö¹L
+									button[tempRow][tempCol].setBackground(Color.DARK_GRAY); // è¨­å®šæŒ‰éˆ•èƒŒæ™¯é¡è‰²
+									buttonIsPress[tempRow][tempCol] = true; // è¨­å®šæŒ‰éˆ•ç‚ºæŒ‰é
 								}
 							}
 						}
-					} else if (!buttonIsPress[row][col]) { // ªşªñ¦³«K«Kªº¦a²z¦ì¸m
+					} else if (!buttonIsPress[row][col]) { // é™„è¿‘æœ‰ä¾¿ä¾¿çš„åœ°ç†ä½ç½®
 						button[row][col].setFont(new Font("", Font.BOLD, 18));
-						button[row][col].setText(Integer.toString(mapAroundPoop[row][col])); // ¦L¥X¼Æ¦r
+						button[row][col].setText(Integer.toString(mapAroundPoop[row][col])); // å°å‡ºæ•¸å­—
 						button[row][col].setForeground(new Color(244, 239, 255));
-						button[row][col].setBackground(Color.DARK_GRAY); // ³]©w«ö¶s­I´ºÃC¦â
-						buttonIsPress[row][col] = true; // ³]©w«ö¶s¬°«ö¹L
+						button[row][col].setBackground(Color.DARK_GRAY); // è¨­å®šæŒ‰éˆ•èƒŒæ™¯é¡è‰²
+						buttonIsPress[row][col] = true; // è¨­å®šæŒ‰éˆ•ç‚ºæŒ‰é
 					}
 				}
-			} else if (buttonIsPress[row][col] && e.getButton() == MouseEvent.BUTTON2) { // ¨ú®ø¼Ğ°Oªº«K«K«ö¯Ã
-				buttonIsPress[row][col] = false; // ¨ú®ø«öÀ£¡C
+			} else if (buttonIsPress[row][col] && e.getButton() == MouseEvent.BUTTON2) { // å–æ¶ˆæ¨™è¨˜çš„ä¾¿ä¾¿æŒ‰ç´
+				buttonIsPress[row][col] = false; // å–æ¶ˆæŒ‰å£“ã€‚
 				button[row][col].setText("");
-				button[row][col].setBackground(Color.LIGHT_GRAY); // ³]©w«ö¶s­I´ºÃC¦â
-				poopCountAdd(1); // «K«K¼Æ+1
-				lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
-			} else if (e.getButton() == MouseEvent.BUTTON3 && !buttonIsPress[row][col]) { // ¼Ğ°O«K«K¡A¨Ã§PÂ_¬O§_µ²§ô¹CÀ¸
-				button[row][col].setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 18));
-				button[row][col].setText("¸T");
+				button[row][col].setBackground(Color.LIGHT_GRAY); // è¨­å®šæŒ‰éˆ•èƒŒæ™¯é¡è‰²
+				poopCountAdd(1); // ä¾¿ä¾¿æ•¸+1
+				lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
+			} else if (e.getButton() == MouseEvent.BUTTON3 && !buttonIsPress[row][col]) { // æ¨™è¨˜ä¾¿ä¾¿ï¼Œä¸¦åˆ¤æ–·æ˜¯å¦çµæŸéŠæˆ²
+				button[row][col].setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 18));
+				button[row][col].setText("ç¦");
 				button[row][col].setForeground(Color.RED);
 				button[row][col].setBackground(new Color(255, 239, 250));
-				buttonIsPress[row][col] = true; // ³]©w«ö¶s¬°«ö¹L
-				poopCountSubstract(1); // «K«K¼Æ-1
-				lb_num.setText("³Ñ¾l«K«K¼Æ¡G" + poopCount);
+				buttonIsPress[row][col] = true; // è¨­å®šæŒ‰éˆ•ç‚ºæŒ‰é
+				poopCountSubstract(1); // ä¾¿ä¾¿æ•¸-1
+				lb_num.setText("å‰©é¤˜ä¾¿ä¾¿æ•¸ï¼š" + poopCount);
 
-				if (poopCount == 0) { // §PÂ_¬O§_µ²§ô¹CÀ¸
+				if (poopCount == 0) { // åˆ¤æ–·æ˜¯å¦çµæŸéŠæˆ²
 					boolean endGame = true;
-					for (int i = 0; i < 9; i++) { // §PÂ_¦³«K«Kªº«ö¶s¬O§_¤w¸g¼Ğ°O
+					for (int i = 0; i < 9; i++) { // åˆ¤æ–·æœ‰ä¾¿ä¾¿çš„æŒ‰éˆ•æ˜¯å¦å·²ç¶“æ¨™è¨˜
 						for (int j = 0; j < 9; j++) {
 							if (map[i][j] == 1)
 								if (buttonIsPress[i][j] != true)
@@ -99,11 +99,11 @@ abstract class mouseClicked implements frame {
 						}
 					}
 					if (endGame) {
-						timeContinue = 0; // ®É¶¡°±¤î­p®É
-						JLabel label2 = new JLabel("®¥³ß¯}Ãö¡I¡I");
-						label2.setFont(new Font("·L³n¥¿¶ÂÅé", Font.BOLD, 14));
-						JOptionPane.showMessageDialog(null, label2); // Åã¥Ü¯}Ãö°T®§
-						restart(); // ­«·s¶}©l¹CÀ¸
+						timeContinue = 0; // æ™‚é–“åœæ­¢è¨ˆæ™‚
+						JLabel label2 = new JLabel("æ­å–œç ´é—œï¼ï¼");
+						label2.setFont(new Font("å¾®è»Ÿæ­£é»‘é«”", Font.BOLD, 14));
+						JOptionPane.showMessageDialog(null, label2); // é¡¯ç¤ºç ´é—œè¨Šæ¯
+						restart(); // é‡æ–°é–‹å§‹éŠæˆ²
 					}
 				}
 			}
